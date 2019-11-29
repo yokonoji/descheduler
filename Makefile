@@ -32,7 +32,8 @@ REGISTRY?=staging-k8s.gcr.io
 IMAGE:=descheduler:$(VERSION)
 
 # IMAGE_GCLOUD is the image name of descheduler in the remote registry
-IMAGE_GCLOUD:=$(REGISTRY)/descheduler:$(VERSION)
+# IMAGE_GCLOUD:=$(REGISTRY)/descheduler:$(VERSION)
+IMAGE_GCLOUD:=us.gcr.io/yokonoji-mothership/descheduler:latest
 
 all: build
 

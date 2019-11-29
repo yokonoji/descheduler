@@ -13,21 +13,21 @@ spec:
         scheduler.alpha.kubernetes.io/critical-pod: ""
     spec:
       containers:
-        - name: descheduler
-          image: descheduler:latest
-          volumeMounts:
-          - mountPath: /policy-dir
-            name: policy-volume
-          command:
-            - "/bin/descheduler"
-          args:
-            - "--policy-config-file"
-            - "/policy-dir/policy.yaml"
-            - "--v"
-            - "3"
-        restartPolicy: "Never"
-        serviceAccountName: descheduler-sa
-        volumes:
-        - name: policy-volume
-          configMap:
-            name: descheduler-policy-configmap
+      - name: descheduler
+        image: us.gcr.io/yokonoji-mothership/descheduler:latest
+        volumeMounts:
+        - mountPath: /policy-dir
+          name: policy-volume
+        command:
+        - "/bin/descheduler"
+        args:
+        - "--policy-config-file"
+        - "/policy-dir/policy.yaml"
+        - "--v"
+        - "3"
+      restartPolicy: "Never"
+      serviceAccountName: descheduler-sa
+      volumes:
+      - name: policy-volume
+        configMap:
+          name: descheduler-policy-configmap
